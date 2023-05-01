@@ -1,0 +1,62 @@
+    //#region Colors
+  //#region Declarations
+
+    // Basic Colors
+    $gray-0: white;
+    $gray-1: #f8f9fb;
+    $gray-2: #e7e7eb;
+    $gray-3: #9ca1a6;
+    $gray-4: #6c757d;
+    $gray-5: #343a40;
+
+
+    $red: #f85a81;
+    $red-80: #f8698d;
+    $red-50: #fcadc0;
+    $red-10: #feeff2;
+    $green: #43d39e;
+    $green-80: #70cfac;
+    $green-50: #a1e9cf;
+    $green-10: #ecfbf5;
+    $orange: #ffbe0b;
+    $orange-80: #fac840;
+    $orange-50: #ffdf85;
+    $orange-10: #fff9e7;
+
+    .red { color: #f85a81;}
+    .red-50 { color: #fcadc0;}
+    .red-10 { color: #feeff2;}
+    .green { color: #43d39e;}
+    .green-50 { color: #a1e9cf;}
+    .green-10 { color: #ecfbf5;}
+    .orange { color: #ffbe0b;}
+    .orange-50 { color: #ffdf85;}
+    .orange-10 { color: #fff9e7;}
+
+    // Palette
+    $indigo_5: #f1f4fe;
+    $indigo_10: #dee6fe;
+    $indigo_20: #cbd8fd;
+    $indigo_40: #a5bbfb;
+    $indigo_60: #93acfb;
+    $indigo_80: #5a81f8;
+    $indigo: #2055f6;
+
+  //#endregion Declarations
+
+//#region Implementations:
+
+    $primary_0: white;
+    $primary_5: $indigo_5;
+    $primary_10: $indigo_10;
+    $primary_20: $indigo_20;
+    $primary_40: $indigo_40;
+    $primary_60: $indigo_60;
+    $primary_80: $indigo_80;
+    $primary: $indigo;
+
+    $bg:              $gray-1 ;
+    $border:          $gray-2 ;
+    $secondary-gray:  $gray-3 ;
+    $light-gray:      $gray-4 ;
+    $dark-gray:       $gray-5 ;

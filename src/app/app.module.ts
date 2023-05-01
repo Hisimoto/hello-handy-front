@@ -10,9 +10,7 @@ import { TemplateService } from './@core/services/template.service';
 
 import {HttpClientModule} from '@angular/common/http';
 
-const MAT_MODULES =[
 
-]
 
 @NgModule({
   declarations: [
@@ -24,7 +22,7 @@ const MAT_MODULES =[
     MaterialModule,
     HttpClientModule,
     ServiceModule.forRoot(),
-    ThemeModule.forRoot()
+    ThemeModule.forRoot(),
   ],
   providers: [],
   //bootstrap: [AppComponent]
