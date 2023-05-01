@@ -23,12 +23,12 @@ export class TemplateComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit() {
-    console.log('blabla');
-    this.initTemplateForm();
-    console.log('blabla');
+    // console.log('blabla');
+    // this.initTemplateForm();
+    // console.log('blabla');
   }
   ngOnChanges() {
-    this.initTemplateForm();
+    // this.initTemplateForm();
   }
 
   initTemplateForm() {

@@ -1,6 +1,33 @@
-div.full-length {
+@import '../../../assets/main-style.scss';
+
+.main-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+.main-image {
+  width: 50%;
+  height: auto;
+  background-image: url('../../../assets/1.PNG');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.full-length {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.full-length-inputs {
+  width: 60%;
+}
+
+.zubehor {
+  width: 50%;
+}
+
+textarea {
+  resize: none !important;
+  width: auto;
+  height: 100px; 
 }
 
 .block-space {
@@ -9,4 +36,25 @@ div.full-length {
 .checkbox {
   display: flex;
   justify-content: flex-start;
+}
+
+.main-password {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.someInput {
+  width: 40%;
+}
+
+.main-row {
+  display: flex;
+}
+
+.inputField {
+  display: flex; 
+  justify-content: space-between;
 }

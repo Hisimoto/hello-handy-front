@@ -1,15 +1,16 @@
 <ngx-page [title]="'Template'">
   <form [formGroup]="templateForm">
-    <div class="full-length">
+    <div class="main-header">
+    <div class="full-length-inputs">
       <div class="inputField">
-        <mat-form-field >
-          <mat-label>{{ "Name" }}</mat-label>
+        <mat-label>{{ "Name : " }}</mat-label>
+        <mat-form-field class="example-form-field" appearance="fill">
           <input
-            matInput
             required
             type="text"
             formControlName="name"
             placeholder="Name"
+            matInput
           />
           <mat-error
             *ngIf="this.templateForm.get('name')!.hasError('required')"
@@ -156,7 +157,10 @@
         </mat-form-field>
       </div>
     </div>
-    <div>
+    <div class="main-image"></div>
+
+    </div>
+    <div class="main-password">
       <mat-form-field [ngClass]="getControlStatus(templateForm, 'passwort')">
         <mat-label>{{ "Passwort (Telefon)" }}</mat-label>
         <input
@@ -180,6 +184,7 @@
     </div>
 
     <div class="full-length">
+      <div>
       <div class="inputField">
         <mat-form-field
           [ngClass]="getControlStatus(templateForm, 'hertseller')"
@@ -270,16 +275,17 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div>
+    </div>
+      <div class="zubehor">
         <mat-form-field [ngClass]="getControlStatus(templateForm, 'zubehor')">
           <mat-label>{{ "Mitgeliefertes Zubehor" }}</mat-label>
-          <input
+          <textarea 
             matInput
             required
             type="text"
             formControlName="zubehor"
             placeholder="Mitgeliefertes Zubehor"
-          />
+          ></textarea>
           <mat-error
             *ngIf="this.templateForm.get('zubehor')!.hasError('required')"
           >
@@ -302,14 +308,14 @@
       </mat-card-header>
       <mat-card-content>
         <section>
+          <div class="main-row">
           <!--row1-->
-          <div class="row">
-            <div class="col-md-2">
+          <div>
+            <div>
               <mat-checkbox
-                class="example-margin"
                 formControlName="fehferdiagnose"
               >
-                'Fehferdiagnose'</mat-checkbox
+                Fehferdiagnose</mat-checkbox
               >
             </div>
             <div class="col-md-2">
@@ -481,11 +487,13 @@
               >
             </div>
           </div>
+        </div>
         </section>
       </mat-card-content>
     </mat-card>
   </div>
   </form>
+
   <button mat-raised-button [disabled]="!isValidTemplate()" (click)="send()">
     "Send Template"
   </button>
