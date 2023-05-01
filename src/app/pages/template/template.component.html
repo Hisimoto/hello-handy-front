@@ -1,0 +1,494 @@
+<ngx-page [title]="'Template'">
+  <form [formGroup]="templateForm">
+    <div class="full-length">
+      <div class="inputField">
+        <mat-form-field >
+          <mat-label>{{ "Name" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="name"
+            placeholder="Name"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('name')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('name')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputField">
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'vorname')">
+          <mat-label>{{ "Vorname" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="vorname"
+            placeholder="Vorname"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('vorname')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('vorname')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputField">
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'strabe')">
+          <mat-label>{{ "Strabe" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="strabe"
+            placeholder="Strabe"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('strabe')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('strabe')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputField">
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'plzOrt')">
+          <mat-label>{{ "PlZ, Ort" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="plzOrt"
+            placeholder="PLZ, Ort"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('plzOrt')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('plzOrt')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputField">
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'email')">
+          <mat-label>{{ "E-Mail" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="email"
+            placeholder="E-Mail"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('email')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('email')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputField">
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'telefon')">
+          <mat-label>{{ "Telefon" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="telefon"
+            placeholder="Telefon"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('telefon')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('telefon')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputField">
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'mobil')">
+          <mat-label>{{ "Mobil" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="mobil"
+            placeholder="Mobil"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('mobil')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('mobil')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <mat-form-field [ngClass]="getControlStatus(templateForm, 'passwort')">
+        <mat-label>{{ "Passwort (Telefon)" }}</mat-label>
+        <input
+          matInput
+          required
+          type="text"
+          formControlName="passwort"
+          placeholder="Passwort (Telefon)"
+        />
+        <mat-error
+          *ngIf="this.templateForm.get('passwort')!.hasError('required')"
+        >
+          "This field is required"
+        </mat-error>
+        <mat-error
+          *ngIf="this.templateForm.get('passwort')!.hasError('maxlength')"
+        >
+          "Max length is 255 characters"
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="full-length">
+      <div class="inputField">
+        <mat-form-field
+          [ngClass]="getControlStatus(templateForm, 'hertseller')"
+        >
+          <mat-label>{{ "Hertseller" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="hertseller"
+            placeholder="Hertseller"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('hertseller')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('hertseller')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputField">
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'modell')">
+          <mat-label>{{ "Modell" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="modell"
+            placeholder="Modell"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('modell')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('modell')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputField">
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'seriennr')">
+          <mat-label>{{ "Seriennr." }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="seriennr"
+            placeholder="Seriennr"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('seriennr')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('seriennr')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputField">
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'imei')">
+          <mat-label>{{ "IMEI - Nr." }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="imei"
+            placeholder="IMEI - Nr."
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('imei')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('imei')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field [ngClass]="getControlStatus(templateForm, 'zubehor')">
+          <mat-label>{{ "Mitgeliefertes Zubehor" }}</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            formControlName="zubehor"
+            placeholder="Mitgeliefertes Zubehor"
+          />
+          <mat-error
+            *ngIf="this.templateForm.get('zubehor')!.hasError('required')"
+          >
+            "This field is required"
+          </mat-error>
+          <mat-error
+            *ngIf="this.templateForm.get('zubehor')!.hasError('maxlength')"
+          >
+            "Max length is 255 characters"
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- checkbox area -->
+    <div formGroupName="checkboxes">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>'Fehlerbeschreibung'</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <section>
+          <!--row1-->
+          <div class="row">
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="fehferdiagnose"
+              >
+                'Fehferdiagnose'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="datensicherung"
+              >
+                'Datensicherung'</mat-checkbox
+              >
+            </div>
+
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="hormuschel">
+                'Hormuschel'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="lautsprecher"
+              >
+                'Lautsprecher'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="wasserschaden"
+              >
+                'Wasserschaden'</mat-checkbox
+              >
+            </div>
+          </div>
+          <!-- row2-->
+          <div class="row">
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="akku">
+                'Akku'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="wiederherstellung"
+              >
+                'Wiederherstellung'</mat-checkbox
+              >
+            </div>
+
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="kamera">
+                'kamera'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="mikrofon">
+                'Mikrofon'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="wifiAntenne"
+              >
+                'WiFi Antenne'</mat-checkbox
+              >
+            </div>
+          </div>
+          <!-- row3-->
+          <div class="row">
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="annaherungssensor"
+              >
+                'Annaherungssensor'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="display">
+                'Display'</mat-checkbox
+              >
+            </div>
+
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="kameragias">
+                'Kameragias'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="powerLLL">
+                'Power/Laut/Leise/Lautlos'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="sonstigeFehler"
+              >
+                'Sonstige Fehler'</mat-checkbox
+              >
+            </div>
+          </div>
+          <!-- row4-->
+          <div class="row">
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="backlight">
+                'Backlight'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="frontkamera"
+              >
+                'Frontkamera'</mat-checkbox
+              >
+            </div>
+
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="kopfhorereing"
+              >
+                'Kopfhorereing'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="ruckseite">
+                'Ruckseite'</mat-checkbox
+              >
+            </div>
+          </div>
+          <!-- row5-->
+          <div class="row">
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="board">
+                'Board'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="hauptkamera"
+              >
+                'Hauptkamera'</mat-checkbox
+              >
+            </div>
+
+            <div class="col-md-2">
+              <mat-checkbox class="example-margin" formControlName="ladebuchse">
+                'Ladebuchse'</mat-checkbox
+              >
+            </div>
+            <div class="col-md-2">
+              <mat-checkbox
+                class="example-margin"
+                formControlName="vibrationsalarm"
+              >
+                'Vibrations alarm'</mat-checkbox
+              >
+            </div>
+          </div>
+          <!-- row6-->
+          <div class="row">
+            <div>
+              <mat-checkbox class="example-margin" formControlName="homebutton">
+                'Homebutton'</mat-checkbox
+              >
+            </div>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  </form>
+  <button mat-raised-button [disabled]="!isValidTemplate()" (click)="send()">
+    "Send Template"
+  </button>
+</ngx-page>
+
+<div>text</div>
