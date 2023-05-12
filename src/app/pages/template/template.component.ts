@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,6 +7,8 @@ import {
 } from '@angular/forms';
 import { TemplateDto } from 'src/app/@core/dto/templateDto';
 import { TemplateService } from 'src/app/@core/services/template.service';
+import { LockScreenComponent } from 'src/app/@theme/components/lock-screen/lock-screen.component';
+import { SignaturePadComponent } from 'src/app/@theme/components/signature-pad/signature-pad.component';
 
 @Component({
   selector: 'app-template',
@@ -16,7 +18,10 @@ import { TemplateService } from 'src/app/@core/services/template.service';
 export class TemplateComponent implements OnInit, OnChanges {
   template= new TemplateDto();
   templateForm: FormGroup;
-
+  lockScreen: string;
+  padIn: string;
+  @ViewChild(SignaturePadComponent) signPad: SignaturePadComponent;
+  @ViewChild(LockScreenComponent) lockScreenComponent: LockScreenComponent;
   constructor(
     private templateService: TemplateService,
     private fb: FormBuilder
@@ -24,15 +29,14 @@ export class TemplateComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     // console.log('blabla');
-    // this.initTemplateForm();
+    this.initTemplateForm();
     // console.log('blabla');
   }
   ngOnChanges() {
-    // this.initTemplateForm();
+    //this.initTemplateForm();
   }
 
   initTemplateForm() {
-    console.log('blabla123');
     this.templateForm = new FormGroup({
       name: new FormControl(this.template.name, [
         Validators.required,
@@ -43,11 +47,9 @@ export class TemplateComponent implements OnInit, OnChanges {
         Validators.maxLength(50),
       ]),
       strabe: new FormControl(this.template.strabe, [
-        Validators.required,
         Validators.maxLength(50),
       ]),
       plzOrt: new FormControl(this.template.plzOrt, [
-        Validators.required,
         Validators.maxLength(50),
       ]),
       email: new FormControl(this.template.email, [
@@ -59,11 +61,9 @@ export class TemplateComponent implements OnInit, OnChanges {
         Validators.maxLength(50),
       ]),
       mobil: new FormControl(this.template.mobil, [
-        Validators.required,
         Validators.maxLength(50),
       ]),
       passwort: new FormControl(this.template.passwort, [
-        Validators.required,
         Validators.maxLength(50),
       ]),
       hertseller: new FormControl(this.template.hertseller, [
@@ -75,18 +75,18 @@ export class TemplateComponent implements OnInit, OnChanges {
         Validators.maxLength(50),
       ]),
       seriennr: new FormControl(this.template.seriennr, [
-        Validators.required,
         Validators.maxLength(50),
       ]),
       imei: new FormControl(this.template.imei, [
-        Validators.required,
         Validators.maxLength(50),
       ]),
       zubehor: new FormControl(this.template.zubehor, [
+        Validators.maxLength(50),
+      ]),
+      preis: new FormControl(this.template.preis, [
         Validators.required,
         Validators.maxLength(50),
       ]),
-      checkboxes: new FormGroup({
         fehferdiagnose: new FormControl(false),
         akku: new FormControl(false),
         annaherungssensor: new FormControl(false),
@@ -103,6 +103,7 @@ export class TemplateComponent implements OnInit, OnChanges {
         kameragias: new FormControl(false),
         kopfhorereing: new FormControl(false),
         ladebuchse: new FormControl(false),
+        vibrationsalarm: new FormControl(false),
         lautsprecher: new FormControl(false),
         mikrofon: new FormControl(false),
         powerLLL: new FormControl(false),
@@ -111,36 +112,48 @@ export class TemplateComponent implements OnInit, OnChanges {
         wasserschaden: new FormControl(false),
         wifiAntenne: new FormControl(false),
         sonstigeFehler: new FormControl(false),
-      }),
+      
     });
-    console.log('bla5');
-
+    this.signPad.clearSignPad();
+    this.lockScreenComponent.reset();
     this.subscribeToChanges();
   }
 
   subscribeToChanges() {}
 
   isValidTemplate() {
-    return true;
+    return this.templateForm.valid;
   }
 
   send() {
-     this.templateService.send(this.templateForm.value)
+    
+    const dto = this.createTemplateDto();
+
+     this.templateService.send(dto)
      .subscribe((response: any) => {
-      console.log("post subscribe");
+      
       
      });
+     this.initTemplateForm();
   }
+  getLockScreen(){
+    const lockScreeOut = this.lockScreenComponent.selectedDots;
+    this.lockScreen = '';
+    lockScreeOut.forEach(x => {
+      this.lockScreen = this.lockScreen.concat(x.id.toString());
+    });
+    
+  }
+  createTemplateDto(){
+    let tempalteDtoPost:TemplateDto;
+    this.getLockScreen();
+    tempalteDtoPost = this.templateForm.value;
+    tempalteDtoPost.lockScreen = this.lockScreen;
+    tempalteDtoPost.signature = this.signPad.signPad.toDataURL();
+    return tempalteDtoPost;
 
-  getControlStatus(form: FormGroup, controlName: string) {
-    const control = form.get(controlName);
-    if (control?.touched && control?.invalid) {
-      return 'danger';
-    }
-    if (control?.touched && control?.valid) {
-      return 'success';
-    }
-
-    return 'primary';
+  }
+  savePdf(){
+    window.print();
   }
 }

@@ -1,4 +1,6 @@
 /dist/
 /node_modules/
 /package-lock.json
-
+/.angular/
+/dist/
+/node_modules/

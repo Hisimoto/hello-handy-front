@@ -9,13 +9,11 @@ export class TemplateService{
     constructor (private http: HttpClient) {}
 
     public send(templateDto: TemplateDto){
-       console.log("service" + JSON.stringify(templateDto));
-       
+        
        return this.http.post<TemplateDto>(
             `${this.apiUrl}/`,
             templateDto
         );
-        console.log("ska123");
         
     }
 }

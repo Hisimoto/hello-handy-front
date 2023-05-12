@@ -1,33 +1,42 @@
 @import '../../../assets/main-style.scss';
 
+@media print{
+  button {
+    display: none;
+  }
+}
 .main-header {
   display: flex;
   justify-content: space-between;
 }
 .main-image {
-  width: 50%;
+  width: 40%;
   height: auto;
-  background-image: url('../../../assets/1.PNG');
+  background-image: url('../../../assets/handy.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
 .full-length {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  font-size: 15px;
+  margin-top: 15px;
+  
 }
 .full-length-inputs {
   width: 60%;
+  font-size: 16.2px;
 }
-
-.zubehor {
-  width: 50%;
+.full-length-inputs2 {
+  width: 40%;
+  font-size: 15px;
 }
 
 textarea {
   resize: none !important;
   width: auto;
-  height: 100px; 
+  height: 102px; 
 }
 
 .block-space {
@@ -41,9 +50,10 @@ textarea {
 .main-password {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 12px;
+  font-size: 20px;
 }
 
 .someInput {
@@ -52,9 +62,70 @@ textarea {
 
 .main-row {
   display: flex;
+  justify-content: space-around;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .inputField {
   display: flex; 
-  justify-content: space-between;
+   justify-content: space-between;
+  // width:100%
+}
+.example-form-field {
+  width: 80%;
+}
+.example-form-field2 {
+  width: 100%;
+}
+.span-text {
+  font-size: 13px;
+  color: gray;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+}
+.span-text-header {
+  font-size: 15px;
+  color: gray;
+  font-weight: 550;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+.footer-green {
+  color: #38ba4e;
+}
+.footer-blue {
+  color: #0095d9;
+}
+.send-button {
+  margin-top: 20px;
+  color: #0095d9;
+  font-size: 20px;
+  border-block-color: #0095d9;
+  border: solid;
+
+}
+.div-send-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  display: flex !important;
+  justify-content: center;
+  max-width: 100%;
+}
+.a4-page{
+  width: 1240px;
+  // height: 1754px;
 }

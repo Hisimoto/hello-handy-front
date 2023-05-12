@@ -6,26 +6,38 @@ import { TemplateComponent } from './pages/template/template.component';
 import { MaterialModule } from './material-module';
 import { ServiceModule } from './@core/services/services.module';
 import { ThemeModule } from './@theme/theme.module';
-import { TemplateService } from './@core/services/template.service';
-
+import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { LockScreenComponent } from './@theme/components/lock-screen/lock-screen.component';
+import { SignaturePadComponent } from './@theme/components/signature-pad/signature-pad.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateComponent
+    TemplateComponent,
+    LockScreenComponent,
+    SignaturePadComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     MaterialModule,
     HttpClientModule,
     ServiceModule.forRoot(),
     ThemeModule.forRoot(),
+    BrowserAnimationsModule,
+    RouterModule.forRoot([
+      {path: 'template', component: TemplateComponent},
+      {path: 'welcome', component: SignaturePadComponent},
+      {path: '**', redirectTo: 'welcome'}
+    ])
   ],
   providers: [],
-  //bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {
@@ -33,9 +45,18 @@ export class AppModule {
     const templateComponent = createCustomElement(TemplateComponent, {
       injector: this.injector,
     });
-
     customElements.define('template-component', templateComponent);
 
+    const lockScreenComponent = createCustomElement(LockScreenComponent, {
+      injector: this.injector,
+    });
+    customElements.define('lock-screen-component', lockScreenComponent);
+
+    const signaturePadComponent = createCustomElement(SignaturePadComponent, {
+      injector: this.injector,
+    });
+    customElements.define('signature-pad-component', signaturePadComponent);
+    
   }
     ngDoBootstrap() {}
 }

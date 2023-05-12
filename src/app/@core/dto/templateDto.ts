@@ -1,4 +1,3 @@
-import { TemplateCheckboxDto } from "./templateCheckboxDto";
 
 export class TemplateDto {
     name: string;
@@ -14,6 +13,31 @@ export class TemplateDto {
     seriennr: string;
     imei: string;
     zubehor: string;
-    
-    checkboxes: TemplateCheckboxDto;
+    preis: string;
+    signature: string;
+    lockScreen: string;
+    fehferdiagnose: boolean;
+    akku: boolean;
+    annaherungssensor: boolean;
+    backlight: boolean;
+    board: boolean;
+    datensicherung: boolean;
+    wiederherstellung: boolean;
+    display: boolean;
+    frontkamera: boolean;
+    hauptkamera: boolean;
+    homebutton: boolean;
+    hormuschel: boolean;
+    kamera: boolean;
+    kameragias: boolean;
+    kopfhorereing: boolean;
+    ladebuchse: boolean;
+    lautsprecher: boolean;
+    mikrofon: boolean;
+    powerLLL: boolean;
+    ruckseite: boolean;
+    vibrationasalarm: boolean;
+    wasserschaden: boolean;
+    wifiAntenne: boolean;
+    sonstigeFehler: boolean;
 }

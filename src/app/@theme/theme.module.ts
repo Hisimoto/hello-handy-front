@@ -8,7 +8,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { BrowserModule } from "@angular/platform-browser";
 import { MaterialModule } from "../material-module";
-import { PageComponent } from "./page/page.component";
+import { PageComponent } from "./components/page/page.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const BASE_MODULES = [
@@ -22,6 +22,7 @@ const BASE_MODULES = [
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatDividerModule,
+  
 ];
 @NgModule({
   imports: [MaterialModule],

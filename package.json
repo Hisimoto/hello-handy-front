@@ -1,31 +1,32 @@
 {
-  "name": "hallohandy-front",
+  "name": "hello-handy-front",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --output-path ../Template-hallo-handy/src/main/resources/static/bundle/ --configuration production --output-hashing none",
+    "build-prod": "ng build --output-path ../Template-hallo-handy/src/main/resources/static/bundle/ --configuration production --output-hashing none",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.1.0",
+    "@angular/cdk": "^14.2.7",
     "@angular/common": "^15.1.0",
     "@angular/compiler": "^15.1.0",
     "@angular/core": "^15.1.0",
     "@angular/elements": "^15.1.0",
     "@angular/forms": "^15.1.0",
+    "@angular/material": "~14.2.7",
     "@angular/platform-browser": "^15.1.0",
     "@angular/platform-browser-dynamic": "^15.1.0",
     "@angular/router": "^15.1.0",
-    "@angular/material": "^14.2.7",
+    "@syncfusion/ej2-angular-inputs": "^21.2.3",
     "rxjs": "~7.8.0",
+    "signature_pad": "^4.1.5",
     "tslib": "^2.3.0",
-    "zone.js": "~0.12.0",
-    "ngx-bootstrap": "^6.2.0",
-    "@ng-bootstrap/ng-bootstrap": "^4.1.2",
-    "bootstrap": "^4.6.0"
+    "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.1.3",
