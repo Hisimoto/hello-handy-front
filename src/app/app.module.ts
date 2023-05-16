@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { LockScreenComponent } from './@theme/components/lock-screen/lock-screen.component';
 import { SignaturePadComponent } from './@theme/components/signature-pad/signature-pad.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 
 
@@ -20,7 +21,8 @@ import { SignaturePadComponent } from './@theme/components/signature-pad/signatu
     AppComponent,
     TemplateComponent,
     LockScreenComponent,
-    SignaturePadComponent
+    SignaturePadComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { SignaturePadComponent } from './@theme/components/signature-pad/signatu
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {path: 'template', component: TemplateComponent},
-      {path: 'welcome', component: SignaturePadComponent},
+      {path: 'welcome', component: WelcomeComponent},
       {path: '**', redirectTo: 'welcome'}
     ])
   ],

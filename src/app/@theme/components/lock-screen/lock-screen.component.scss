@@ -1,0 +1,42 @@
+div {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  // height: 100vh;
+}
+span {
+  font-size: 22px;
+  color: gray;
+}
+circle:hover {
+  cursor: pointer;
+  fill: #38ba4e;
+}
+
+circle:active {
+  cursor: pointer;
+  fill: #38ba4e;
+}
+.line {
+  stroke-width: 10px;
+  stroke-linecap: round;
+  fill:#38ba4e;
+}
+.main-image {
+  width: 40%;
+  height: auto;
+  background-image: url('../../../../assets/handy.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.printme {
+  display: none;
+}
+@media print {
+  .no-printme  {
+    display: none;
+  }
+  .printme  {
+    display: block;
+  }
+}

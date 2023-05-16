@@ -1,0 +1,13 @@
+<div class="divColumn">
+  <div>
+    <canvas 
+      #signPadCanvas
+      (touchstart)="startSignPadDrawing($event)"
+      (touchmove)="movedFinger($event)"
+    ></canvas>
+  </div>
+  <div>
+    <button  class="no-printme" (click)="clearSignPad()">Reset</button>
+    <!-- <button class="btn btn-warning" (click)="saveSignPad()">Save</button> -->
+  </div>
+</div>
