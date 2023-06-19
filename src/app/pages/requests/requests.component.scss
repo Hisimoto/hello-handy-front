@@ -1,0 +1,47 @@
+@import '../../../assets/main-style.scss';
+
+.button-row {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-field{
+  min-width: 350px!important;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.example-form-field {
+
+}
+.action {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }  
+ 
+}
+
+.suffix{
+  text-align: center;
+}
+.table-scroll {
+  overflow-x: auto;
+  max-width: 1000px;
+}

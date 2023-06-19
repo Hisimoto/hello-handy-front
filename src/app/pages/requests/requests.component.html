@@ -1,0 +1,150 @@
+<ngx-page class="a4-page"  [title]="'Requests'">
+<div>
+  <div style="display: flex;
+  flex-direction: row;
+  justify-content: space-between;">
+    <mat-form-field
+          class="example-form-field"
+          style="font-size: 20px; width: 250px"
+        >
+          <mat-label>{{ "Please enter a Search Term"}}</mat-label>
+          <input
+          style="margin-bottom: 10px;"
+            type="search"
+            class="form-control"
+            [formControl]="searchValue"
+            matInput
+          />
+          <mat-icon matSuffix style="margin: 0 5px 16px 0">search</mat-icon>
+        </mat-form-field>
+        <mat-form-field
+          class="example-form-field"
+          style="font-size: 20px; width: 250px"
+        >
+          <mat-label>{{ "Please enter ID of request"}}</mat-label>
+          <input
+          style="margin-bottom: 10px;"
+            type="search"
+            class="form-control"
+            [formControl]="searchValueID"
+            matInput
+          />
+          <mat-icon matSuffix style="margin: 0 5px 16px 0">search</mat-icon>
+        </mat-form-field>
+      </div>
+<table
+class="dr-table"
+mat-table
+[dataSource]="dataSource"
+matSort
+(matSortChange)="announceSortChange($event)"
+>
+
+<ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "Name" }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row?.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="vorname">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "Vorname" }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row?.vorname }}</td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "E-Mail" }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row?.email }}</td>
+  </ng-container>
+  <ng-container matColumnDef="telefon">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "Telefon" }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row?.telefon }}</td>
+  </ng-container>
+  <ng-container matColumnDef="hertseller">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "Hertseller" }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row?.hertseller }}</td>
+  </ng-container>
+  <ng-container matColumnDef="modell">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "Modell" }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row?.modell }}</td>
+  </ng-container>
+  <ng-container matColumnDef="preis">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "Preis" }}
+    </th>
+    <td mat-cell *matCellDef="let row">{{ row?.preis }}</td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      {{ "Status" }}
+    </th>
+    <td   mat-cell *matCellDef="let row">
+      <mat-icon [color]="getStatus(row?.status)" (click)="resolve(row?.id)">
+        check_circle
+      </mat-icon>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="view">
+    <th mat-header-cell *matHeaderCellDef >
+      {{ "View" }}
+    </th>
+    <td   mat-cell *matCellDef="let row">
+      <mat-icon (click)="viewRequest(row?.id, true)">
+        visibility
+      </mat-icon>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="infoClient">
+    <th mat-header-cell *matHeaderCellDef >
+      {{ "Info Client" }}
+    </th>
+    <td   mat-cell *matCellDef="let row">
+      <mat-icon (click)="savePdfClient(row?.id)">
+        person
+      </mat-icon>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="infoComanda">
+    <th mat-header-cell *matHeaderCellDef >
+      {{ "Info Comanda" }}
+    </th>
+    <td   mat-cell *matCellDef="let row">
+      <mat-icon (click)="savePdfComanda(row)">
+        phone_android
+      </mat-icon>
+    </td>
+  </ng-container>
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">
+      {{ "No data to display"}}
+    </td>
+  </tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let s; columns: displayedColumns"
+  ></tr>
+</table>
+<div class="center-content-bl">
+    <mat-paginator
+      [length]="this.page.totalElements"
+      [pageIndex]="this.page.page"
+      [pageSize]="this.page.pageSize"
+      [pageSizeOptions]="[10, 20, 50, 100]"
+      (page)="onPageClick($event)"
+    >
+    </mat-paginator>
+  </div>
+
+</div>
+
+
+</ngx-page>
