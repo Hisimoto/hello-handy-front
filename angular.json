@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hello-handy-front": {
+    "hallohandy": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hello-handy-front",
+            "outputPath": "dist/hallohandy",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -64,12 +64,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "hallohandy:build"
+        },
           "configurations": {
             "production": {
-              "browserTarget": "hello-handy-front:build:production"
+              "browserTarget": "hallohandy:build:production"
             },
             "development": {
-              "browserTarget": "hello-handy-front:build:development"
+              "browserTarget": "hallohandy:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hello-handy-front:build"
+            "browserTarget": "hallohandy:build"
           }
         },
         "test": {

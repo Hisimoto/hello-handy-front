@@ -18,11 +18,12 @@ import { TemplateService } from "src/app/@core/services/template.service";
 
     getEmails(){
         this.templateService.exportDefaultPriceNumbers().subscribe((filename) => {
-          console.log('allgood');
         },
         err => {
           console.error(JSON.stringify(err));
           
         });
+    }
+    getRequests(){this.router.navigate(['/requests']);
     }
   }

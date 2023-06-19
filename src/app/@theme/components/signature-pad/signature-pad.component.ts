@@ -10,6 +10,7 @@ export class SignaturePadComponent{
   @ViewChild('signPadCanvas', {static: false}) signaturePadElement:any;
   @Output() padOut: EventEmitter<string> = new EventEmitter();
   signImage:any;
+  viewPad:any;
 
   constructor() { }
 
@@ -22,7 +23,6 @@ export class SignaturePadComponent{
   }
   /*It's work in devices*/
   movedFinger(event: Event) {
-    console.log("move fing");
     
   }
   /*Undo last step from the signature*/
@@ -34,8 +34,10 @@ export class SignaturePadComponent{
     }
   }
   /*Clean whole the signature*/
-  clearSignPad() {
-    this.signPad.clear();
+  clearSignPad() {    
+    if(this.signPad){
+        this.signPad.clear();
+    }
   }
   /*Here you can save the signature as a Image*/
   saveSignPad() {
@@ -44,4 +46,5 @@ export class SignaturePadComponent{
     this.padOut.emit(this.signImage);
     //Here you can save your signature image using your API call.
   }
+
 }

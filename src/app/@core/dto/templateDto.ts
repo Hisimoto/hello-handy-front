@@ -1,5 +1,7 @@
+import { Status } from "./status.enum";
 
 export class TemplateDto {
+    id: string;
     name: string;
     vorname: string;
     strabe: string;
@@ -40,4 +42,5 @@ export class TemplateDto {
     wasserschaden: boolean;
     wifiAntenne: boolean;
     sonstigeFehler: boolean;
+    status: Status;
 }

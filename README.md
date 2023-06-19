@@ -1,2 +1,2 @@
-# hello-handy-front
+# hallohandy
 front end for hello handy

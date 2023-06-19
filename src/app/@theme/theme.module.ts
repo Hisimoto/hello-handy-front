@@ -25,7 +25,7 @@ const BASE_MODULES = [
   
 ];
 @NgModule({
-  imports: [MaterialModule],
+  imports: [MaterialModule,CommonModule],
   exports: [
     PageComponent,
   ],

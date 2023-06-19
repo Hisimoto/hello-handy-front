@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-interface Dot {
+export interface Dot {
   cx: number;
   cy: number;
   id: number;
@@ -27,10 +27,9 @@ export class LockScreenComponent {
   selectedDots: Dot[] = [];
 
   lines: string[] = [];
-  isVisible = true;
+  isView:boolean;
 
   selectDot(dot: Dot) {
-    console.log("start");
     
     this.selectedDots.push(dot);
     if (this.selectedDots.length > 1) {
@@ -42,7 +41,6 @@ export class LockScreenComponent {
         // this.lines.push(`M ${lastDot.cx},${lastDot.cy} L ${lastDot.cx + 10},${lastDot.cy + 10}`);
       }
     }
-    console.log("selected dots: " + JSON.stringify(this.selectedDots))
   }
 
   reset() {

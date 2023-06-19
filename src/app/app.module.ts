@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { LockScreenComponent } from './@theme/components/lock-screen/lock-screen.component';
 import { SignaturePadComponent } from './@theme/components/signature-pad/signature-pad.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { Requests } from './pages/requests/requests.component';
 
 
 
@@ -20,6 +21,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
   declarations: [
     AppComponent,
     TemplateComponent,
+    Requests,
     LockScreenComponent,
     SignaturePadComponent,
     WelcomeComponent
@@ -34,10 +36,12 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {path: 'template', component: TemplateComponent},
+      {path: 'requests', component: Requests},
       {path: 'welcome', component: WelcomeComponent},
       {path: '**', redirectTo: 'welcome'}
-    ])
+    ], {useHash: false})
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

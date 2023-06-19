@@ -40,3 +40,8 @@ circle:active {
     display: block;
   }
 }
+.divColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+}

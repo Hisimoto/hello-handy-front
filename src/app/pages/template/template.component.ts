@@ -1,13 +1,16 @@
-import { Component, OnInit, OnChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewChild, Inject, Optional } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 import { TemplateDto } from 'src/app/@core/dto/templateDto';
 import { TemplateService } from 'src/app/@core/services/template.service';
-import { LockScreenComponent } from 'src/app/@theme/components/lock-screen/lock-screen.component';
+import { ConfirmationComponent } from 'src/app/@theme/components/confirmation/confirmation.component';
+import { Dot, LockScreenComponent } from 'src/app/@theme/components/lock-screen/lock-screen.component';
 import { SignaturePadComponent } from 'src/app/@theme/components/signature-pad/signature-pad.component';
 
 @Component({
@@ -20,23 +23,30 @@ export class TemplateComponent implements OnInit, OnChanges {
   templateForm: FormGroup;
   lockScreen: string;
   padIn: string;
+  
   @ViewChild(SignaturePadComponent) signPad: SignaturePadComponent;
   @ViewChild(LockScreenComponent) lockScreenComponent: LockScreenComponent;
   constructor(
     private templateService: TemplateService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private sanitizer: DomSanitizer,
+    private dialogService: MatDialog,
+    @Optional() @Inject(MAT_DIALOG_DATA)
+    public injectData: {
+      templateId:number;
+      isView:boolean;
+    }
   ) {}
 
   ngOnInit() {
-    // console.log('blabla');
     this.initTemplateForm();
-    // console.log('blabla');
   }
   ngOnChanges() {
     //this.initTemplateForm();
   }
 
   initTemplateForm() {
+    
     this.templateForm = new FormGroup({
       name: new FormControl(this.template.name, [
         Validators.required,
@@ -103,7 +113,6 @@ export class TemplateComponent implements OnInit, OnChanges {
         kameragias: new FormControl(false),
         kopfhorereing: new FormControl(false),
         ladebuchse: new FormControl(false),
-        vibrationsalarm: new FormControl(false),
         lautsprecher: new FormControl(false),
         mikrofon: new FormControl(false),
         powerLLL: new FormControl(false),
@@ -114,9 +123,36 @@ export class TemplateComponent implements OnInit, OnChanges {
         sonstigeFehler: new FormControl(false),
       
     });
-    this.signPad.clearSignPad();
-    this.lockScreenComponent.reset();
+    if(this.injectData){
+      
+        if(this.injectData.isView == true) {
+          this.fetchTempalteData()
+        }
+    }
     this.subscribeToChanges();
+  }
+
+  fetchTempalteData(){
+    
+    this.templateService.getRequestById(this.injectData.templateId).subscribe(
+      (response: TemplateDto) => {
+        const templateData = response;
+        if (templateData) {
+          Object.keys(templateData).forEach((key: string) => {
+            const control = this.templateForm.get(key);
+            if (control) {
+              control.setValue(templateData[key as keyof TemplateDto]);
+              control.disable();
+            }
+          });
+        }
+        this.signPad.viewPad = this.decodeBase64Image(response.signature);
+        
+
+        this.setLockScreen(response.lockScreen);
+      }
+    );
+    
   }
 
   subscribeToChanges() {}
@@ -126,15 +162,22 @@ export class TemplateComponent implements OnInit, OnChanges {
   }
 
   send() {
-    
-    const dto = this.createTemplateDto();
-
-     this.templateService.send(dto)
-     .subscribe((response: any) => {
-      
+    const dto = this.createTemplateDto();    
+    const dialogRef = this.dialogService.open(ConfirmationComponent, {
+      data: {
+        viewText: "Are you sure you want to save selected request?",
+      },
+    });
+    dialogRef.afterClosed().subscribe((response) => {
+      if (response) {
+        this.templateService.send(dto)
+     .subscribe(() => {
       
      });
      this.initTemplateForm();
+      }
+    });
+     
   }
   getLockScreen(){
     const lockScreeOut = this.lockScreenComponent.selectedDots;
@@ -144,6 +187,22 @@ export class TemplateComponent implements OnInit, OnChanges {
     });
     
   }
+  setLockScreen(lockScreen: string){
+    const numbersArray: number[] = lockScreen.split('').map(Number);
+    numbersArray.forEach(x => {
+      const y = this.findDotById(x);
+      if(y !== undefined){
+      this.lockScreenComponent.selectDot(y);
+      }
+    });
+    this.lockScreenComponent.isView = true;
+    
+  }
+
+   findDotById(id: number): Dot | undefined {
+    return this.lockScreenComponent.dots.find(dot => dot.id === id);
+  }
+
   createTemplateDto(){
     let tempalteDtoPost:TemplateDto;
     this.getLockScreen();
@@ -156,4 +215,9 @@ export class TemplateComponent implements OnInit, OnChanges {
   savePdf(){
     window.print();
   }
+  
+  decodeBase64Image(base64ImageData: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(base64ImageData); // Decode the base64 string     
+  }
+  
 }

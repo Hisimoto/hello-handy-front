@@ -4,14 +4,15 @@ import { Injectable } from '@angular/core';
 import { map } from "rxjs";
 
 import { saveAs } from 'file-saver';
+import { Page } from "../dto/page";
 
 @Injectable()
 export class TemplateService{
 
-    private apiUrl = 'http://localhost:8070/api/service/template';
+    private apiUrl = '/hallohandy-back/api/hallohandy';
     constructor (private http: HttpClient) {}
 
-    public send(templateDto: TemplateDto){
+    send(templateDto: TemplateDto){
         
        return this.http.post<TemplateDto>(
             `${this.apiUrl}/`,
@@ -19,6 +20,27 @@ export class TemplateService{
         );
         
     }
+    getRequests(page: Page){
+        
+      return this.http.post<TemplateDto>(
+           `${this.apiUrl}/search`,
+           page
+       );
+   }
+   getRequestById(id: number){
+        
+    return this.http.get<TemplateDto>(
+         `${this.apiUrl}/${id}`
+     );
+ }
+   resolveRequest(id: string){
+    
+    return this.http.put<TemplateDto>(
+         `${this.apiUrl}/resolve`,
+         id
+     );
+ }
+   
     exportDefaultPriceNumbers() {
         let headers = new HttpHeaders(); // additional headers in here
         headers = headers.set('Content-Type', 'application/json');

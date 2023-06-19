@@ -1,13 +1,14 @@
 <div class="divColumn">
-  <div>
-    <canvas 
+  
+    <canvas *ngIf="!viewPad"
       #signPadCanvas
       (touchstart)="startSignPadDrawing($event)"
       (touchmove)="movedFinger($event)"
     ></canvas>
-  </div>
-  <div>
-    <button  class="no-printme" (click)="clearSignPad()">Reset</button>
-    <!-- <button class="btn btn-warning" (click)="saveSignPad()">Save</button> -->
-  </div>
+    <img *ngIf="viewPad" [src]="viewPad" alt="Signature Pad"  />
+    <div style="text-align: center;">
+      <button *ngIf="!viewPad" class="no-printme" (click)="clearSignPad()">Reset</button>
+    </div>
+  
+  
 </div>
