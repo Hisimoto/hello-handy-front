@@ -128,6 +128,9 @@ export class TemplateComponent implements OnInit, OnChanges {
         if(this.injectData.isView == true) {
           this.fetchTempalteData()
         }
+    } else {
+     this.signPad.clearSignPad();
+    this.lockScreenComponent.reset();
     }
     this.subscribeToChanges();
   }

@@ -31,6 +31,7 @@ export class Requests implements OnInit, OnChanges {
 
   page = new Page();
   displayedColumns: string[] = [
+    "id",
     "name",
     "vorname",
     "email",
@@ -92,7 +93,6 @@ export class Requests implements OnInit, OnChanges {
   async loadData() {
     this.templateService.getRequests(this.page).subscribe((response: any) => {
       this.dataSource = response.content;
-      
       this.page.totalElements = response.totalElements;
     });
   }
